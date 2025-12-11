@@ -50,7 +50,7 @@ export default function Sidebar({ isOpen, isMinimized, onClose, onToggleMinimize
       }}>
         <div className="flex flex-col h-full">
           {/* Header with Logo (mobile) / Minimize Button (desktop) */}
-          <div className={`border-b border-white/20 flex items-center ${isMinimized ? 'justify-center p-5' : 'p-4 lg:justify-center lg:p-5'} transition-all duration-300`} style={{
+          <div className={`border-b border-white/20 flex items-center ${isMinimized ? 'justify-center p-5' : 'p-4 lg:justify-between lg:px-4 lg:py-5'} transition-all duration-300`} style={{
             boxShadow: 'inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)'
           }}>
             {/* Logo - visible on mobile only, centered */}
@@ -75,20 +75,41 @@ export default function Sidebar({ isOpen, isMinimized, onClose, onToggleMinimize
               </button>
             </div>
             
-            {/* Minimize button - hidden on mobile, visible on desktop */}
-            <button
-              onClick={onToggleMinimize}
-              className="hidden lg:block p-1.5 rounded-lg hover:bg-white/5 transition-colors duration-200"
-              title={isMinimized ? "Expand sidebar" : "Minimize sidebar"}
-            >
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMinimized ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-                )}
-              </svg>
-            </button>
+            {/* Desktop header content */}
+            <div className="hidden lg:flex items-center justify-between w-full gap-3">
+              {/* Left side - User Profile */}
+              {!isMinimized && (
+                <div className="flex items-center gap-2.5 flex-1 min-w-0">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white" style={{
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}>
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs font-semibold text-white truncate">Guest</div>
+                    <div className="text-[10px] text-gray-400 truncate">Not logged in</div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Minimize button */}
+              <button
+                onClick={onToggleMinimize}
+                className="p-1.5 rounded-lg hover:bg-white/5 transition-colors duration-200 flex-shrink-0"
+                title={isMinimized ? "Expand sidebar" : "Minimize sidebar"}
+              >
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMinimized ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
 
         {/* Navigation Links */}
