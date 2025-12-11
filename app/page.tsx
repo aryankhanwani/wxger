@@ -138,7 +138,7 @@ export default function Home() {
                 maxWidth: '1280px !important',
                 // marginLeft: 'calc(-50vw + 50%)',
                 marginLeft: '0',
-                marginRight: '0'
+                marginRight: 'calc(-50vw + 50%)'
               }}
             >
               <div 
