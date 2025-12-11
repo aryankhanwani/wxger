@@ -149,7 +149,6 @@ export default function SignupModal({ isOpen, onClose, onSwitchToLogin }: Signup
               className="w-full liquid-glass rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
               placeholder="Enter your email"
               required
-              type="email"
               disabled={loading}
             />
           </div>
